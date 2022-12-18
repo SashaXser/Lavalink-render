@@ -1,0 +1,63 @@
+server: # REST and WS server
+  port: 443
+  address: 0.0.0.0
+lavalink:
+  server:
+    password: "lavalink"
+    sources:
+      youtube: true
+      bandcamp: false
+      soundcloud: true
+      twitch: false
+      vimeo: false
+      http: true
+      local: false
+    bufferDurationMs: 250 # The duration of the NAS buffer. Higher values fare better against longer GC pauses
+    frameBufferDurationMs: 5000 # How many milliseconds of audio to keep buffered
+    youtubePlaylistLoadLimit: 1 # Number of pages at 100 each
+    opusEncodingQuality: 10 # Opus encoder quality. Valid values range from 0 to 10, where 10 is best quality but is the most expensive on the CPU.
+    resamplingQuality: HIGH # Quality of resampling operations. Valid values are LOW, MEDIUM and HIGH, where HIGH uses the most CPU.
+    trackStuckThresholdMs: 10000 # The threshold for how long a track can be stuck. A track is stuck if does not return any audio data.
+    playerUpdateInterval: 5 # How frequently to send player updates to clients, in seconds
+    useSeekGhosting: true # Seek ghosting is the effect where whilst a seek is in progress, the audio buffer is read from until empty, or until seek is ready.
+    youtubeSearchEnabled: true
+    soundcloudSearchEnabled: true
+    gc-warnings: true
+
+  plugins:
+    - dependency: "com.github.TopiSenpai.LavaSrc:lavasrc-plugin:3.1.4"
+      repository: "https://jitpack.io"
+
+plugins:
+  lavasrc:
+    providers:
+      - "scsearch:%QUERY%"
+      - 'ytsearch:"%ISRC%"'
+      - "ytsearch:%QUERY%"
+    sources:
+      spotify: true
+      applemusic: false
+      deezer: false
+      yadexmusic: false
+    spotify:
+      clientId: "9729393ad26c4c8d9e4e4a0bc8cfd582"
+      clientSecret: "462a43ad274f40eaa149a8330fda7001"
+      countryCode: "US"
+
+metrics:
+  prometheus:
+    enabled: false
+    endpoint: /metrics
+
+sentry:
+  dsn: ""
+  environment: ""
+
+logging:
+  file:
+    max-history: 1
+    max-size: 10MB
+  path: ./logs/
+  level:
+    root: INFO
+    lavalink: INFO

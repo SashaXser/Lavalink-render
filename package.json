@@ -1,6 +1,29 @@
 {
+  "name": "lavalink-render",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlyTri/Lavalink-render.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FlyTri/Lavalink-render/issues"
+  },
+  "homepage": "https://github.com/FlyTri/Lavalink-render#readme",
   "dependencies": {
+    "node-fetch": "^2.6.7",
+    "webidl-conversions": "^3.0.1",
     "dotenv": "^16.0.3",
-    "node-fetch": "^2.6.7"
-  }
+    "whatwg-url": "^5.0.0",
+    "tr46": "^0.0.3"
+  },
+  "description": ""
 }
